@@ -6,19 +6,12 @@ function hasCycle(adjMatrix) {
     return false;
 }
 
-// Altered my depth first search from https://github.com/COSC3020/graph-search-rmille70
+// Altered my depth first search (https://github.com/COSC3020/graph-search-rmille70)
 function dfsCycles(adjMatrix, startNode, targetNode) {
     if (!adjMatrix || !adjMatrix.length) { return []; }
     if(startNode == adjMatrix.length-1){
-        if(adjMatrix.length == 1 && adjMatrix[0][0] == 1){
-            return [startNode];
-        } else if (adjMatrix.length == 1 && adjMatrix[0][0] == 0){
-            return [];
-        } else if(adjMatrix[startNode][startNode] == 1){
-            return [startNode];
-        } else if(adjMatrix[startNode][startNode] == 0){
-            return [];
-        }
+        if((adjMatrix.length == 1 && adjMatrix[0][0] == 1) || (adjMatrix[startNode][startNode] == 1)){ return [startNode]; } 
+        return [];
     }
     if(startNode == targetNode && adjMatrix[startNode][startNode] == 1){ return [startNode]; }
     startNode++;
