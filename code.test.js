@@ -1,6 +1,5 @@
 const fs = require('fs');
 const assert = require('assert');
-
 eval(fs.readFileSync('code.js')+'');
 
 const testCases = [
@@ -11,31 +10,37 @@ const testCases = [
   },
 
   {
-    description: 'Single Self Pointing Node (no path possible)',
+    description: 'Single Node; no edges (No Cycles)',
     adjacencyMatrix: [[0]],
     expectedResult: false,
   },
 
   {
-    description: 'Disconnected graph (no path possible)',
+    description: 'Disconnected graph (No Cycles)',
     adjacencyMatrix: [[0, 0], [0, 0]],
     expectedResult: false,
   },
 
   {
-    description: 'Simple connected graph (path exists)',
+    description: 'Single Node; has edge (Contains Cycle)',
+    adjacencyMatrix: [[1]],
+    expectedResult: true,
+  },
+
+  {
+    description: 'Simple connected graph (Contains Cycle)',
     adjacencyMatrix: [[0, 1], [1, 0]],
     expectedResult: true,
   },
 
   {
-    description: 'Graph with multiple paths (should find one)',
+    description: 'Graph with multiple cycles',
     adjacencyMatrix: [[0, 1, 0], [1, 0, 1], [0, 1, 0]],
     expectedResult: true,
   },
 
   {
-    description: 'Target Node is Starting Node',
+    description: 'Reflexive Edge',
     adjacencyMatrix: [[1, 0], [0, 1]],
     expectedResult: true,
   },
