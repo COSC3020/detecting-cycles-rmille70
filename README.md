@@ -16,3 +16,5 @@ the function and run automatically when you commit through a GitHub action.
 
 What is the worst-case big $\Theta$ complexity of your implementation? Add your
 answer, including your reasoning, to this markdown file.
+
+The for loop within hasCycle() iterates for each vertex in the graph, and in that loop it calls the function dfsCycles() which is largely based off of the depth first search function I implemented in the graph search assignment. dfsCycles() checks for reflexive edges on first and last vertices (in constant time), if no loops are detected, we then increment our starting vertex and send our adjacency matrix to dfsFinder() for traversal. dfsFinder in the worst case would traverse all vertices (that can be reached) in the graph, and all edges in the graph. Thus specfic time complexity of hasCycle() is $v(v + e)$ (where $v$ is the number of vertices and $e$ is the number of edges) which can be bounded by $\Theta(v^2 + ve).$
